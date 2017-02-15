@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C2D93F71E53EF3E001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D93F61E53EF3E001AF122 /* main.m */; };
 		9C2D93FA1E53EF3E001AF122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D93F91E53EF3E001AF122 /* AppDelegate.m */; };
 		9C2D93FD1E53EF3E001AF122 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D93FC1E53EF3E001AF122 /* ViewController.m */; };
-		9C2D94001E53EF3E001AF122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D93FE1E53EF3E001AF122 /* Main.storyboard */; };
-		9C2D94021E53EF3E001AF122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D94011E53EF3E001AF122 /* Assets.xcassets */; };
-		9C2D94051E53EF3E001AF122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D94031E53EF3E001AF122 /* LaunchScreen.storyboard */; };
 		9C2D94101E53EF3E001AF122 /* ZQTDevKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D940F1E53EF3E001AF122 /* ZQTDevKitTests.m */; };
 		9C2D941B1E53EF3E001AF122 /* ZQTDevKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D941A1E53EF3E001AF122 /* ZQTDevKitUITests.m */; };
+		9C2D94311E53F0A5001AF122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D94291E53F0A5001AF122 /* Assets.xcassets */; };
+		9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */; };
+		9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942C1E53F0A5001AF122 /* Main.storyboard */; };
+		9C2D94341E53F0A5001AF122 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942E1E53F0A5001AF122 /* Info.plist */; };
+		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
+		9C2D94381E53F107001AF122 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D94371E53F107001AF122 /* RegExCategories.m */; };
+		9C2DCF0C1E54075F00FA765E /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */; };
+		9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */; };
+		9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */; };
+		9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,21 +42,31 @@
 
 /* Begin PBXFileReference section */
 		9C2D93F21E53EF3E001AF122 /* ZQTDevKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZQTDevKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C2D93F61E53EF3E001AF122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9C2D93F81E53EF3E001AF122 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C2D93F91E53EF3E001AF122 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C2D93FB1E53EF3E001AF122 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9C2D93FC1E53EF3E001AF122 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9C2D93FF1E53EF3E001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9C2D94011E53EF3E001AF122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9C2D94041E53EF3E001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9C2D94061E53EF3E001AF122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2D940B1E53EF3E001AF122 /* ZQTDevKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZQTDevKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2D940F1E53EF3E001AF122 /* ZQTDevKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQTDevKitTests.m; sourceTree = "<group>"; };
 		9C2D94111E53EF3E001AF122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2D94161E53EF3E001AF122 /* ZQTDevKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZQTDevKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2D941A1E53EF3E001AF122 /* ZQTDevKitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQTDevKitUITests.m; sourceTree = "<group>"; };
 		9C2D941C1E53EF3E001AF122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C2D94291E53F0A5001AF122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C2D942B1E53F0A5001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9C2D942D1E53F0A5001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9C2D942E1E53F0A5001AF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C2D942F1E53F0A5001AF122 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C2D94361E53F107001AF122 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
+		9C2D94371E53F107001AF122 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
+		9C2DCF0A1E54075F00FA765E /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
+		9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
+		9C2DCF0D1E54077900FA765E /* UIButton+TouchAreaInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TouchAreaInsets.h"; sourceTree = "<group>"; };
+		9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TouchAreaInsets.m"; sourceTree = "<group>"; };
+		9C2DCF101E5407FF00FA765E /* UIButton+Indicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Indicator.h"; sourceTree = "<group>"; };
+		9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Indicator.m"; sourceTree = "<group>"; };
+		9C2DCF131E543F4A00FA765E /* NSString+RegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegEx.h"; sourceTree = "<group>"; };
+		9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegEx.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,21 +121,11 @@
 				9C2D93F91E53EF3E001AF122 /* AppDelegate.m */,
 				9C2D93FB1E53EF3E001AF122 /* ViewController.h */,
 				9C2D93FC1E53EF3E001AF122 /* ViewController.m */,
-				9C2D93FE1E53EF3E001AF122 /* Main.storyboard */,
-				9C2D94011E53EF3E001AF122 /* Assets.xcassets */,
-				9C2D94031E53EF3E001AF122 /* LaunchScreen.storyboard */,
-				9C2D94061E53EF3E001AF122 /* Info.plist */,
-				9C2D93F51E53EF3E001AF122 /* Supporting Files */,
+				9C2DCF081E5406EF00FA765E /* UI */,
+				9C2D94301E53F0A5001AF122 /* 正则表达式 */,
+				9C2D94281E53F0A5001AF122 /* ProjectConfig */,
 			);
 			path = ZQTDevKit;
-			sourceTree = "<group>";
-		};
-		9C2D93F51E53EF3E001AF122 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9C2D93F61E53EF3E001AF122 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9C2D940E1E53EF3E001AF122 /* ZQTDevKitTests */ = {
@@ -138,6 +144,50 @@
 				9C2D941C1E53EF3E001AF122 /* Info.plist */,
 			);
 			path = ZQTDevKitUITests;
+			sourceTree = "<group>";
+		};
+		9C2D94281E53F0A5001AF122 /* ProjectConfig */ = {
+			isa = PBXGroup;
+			children = (
+				9C2D94291E53F0A5001AF122 /* Assets.xcassets */,
+				9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */,
+				9C2D942C1E53F0A5001AF122 /* Main.storyboard */,
+				9C2D942E1E53F0A5001AF122 /* Info.plist */,
+				9C2D942F1E53F0A5001AF122 /* main.m */,
+			);
+			path = ProjectConfig;
+			sourceTree = "<group>";
+		};
+		9C2D94301E53F0A5001AF122 /* 正则表达式 */ = {
+			isa = PBXGroup;
+			children = (
+				9C2D94361E53F107001AF122 /* RegExCategories.h */,
+				9C2D94371E53F107001AF122 /* RegExCategories.m */,
+				9C2DCF131E543F4A00FA765E /* NSString+RegEx.h */,
+				9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */,
+			);
+			path = "正则表达式";
+			sourceTree = "<group>";
+		};
+		9C2DCF081E5406EF00FA765E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9C2DCF091E5406EF00FA765E /* Button_Category */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9C2DCF091E5406EF00FA765E /* Button_Category */ = {
+			isa = PBXGroup;
+			children = (
+				9C2DCF101E5407FF00FA765E /* UIButton+Indicator.h */,
+				9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */,
+				9C2DCF0A1E54075F00FA765E /* UIButton+countDown.h */,
+				9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */,
+				9C2DCF0D1E54077900FA765E /* UIButton+TouchAreaInsets.h */,
+				9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */,
+			);
+			path = Button_Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +296,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C2D94051E53EF3E001AF122 /* LaunchScreen.storyboard in Resources */,
-				9C2D94021E53EF3E001AF122 /* Assets.xcassets in Resources */,
-				9C2D94001E53EF3E001AF122 /* Main.storyboard in Resources */,
+				9C2D94341E53F0A5001AF122 /* Info.plist in Resources */,
+				9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */,
+				9C2D94311E53F0A5001AF122 /* Assets.xcassets in Resources */,
+				9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +325,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C2D93FD1E53EF3E001AF122 /* ViewController.m in Sources */,
+				9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */,
+				9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */,
+				9C2DCF0C1E54075F00FA765E /* UIButton+countDown.m in Sources */,
+				9C2D94381E53F107001AF122 /* RegExCategories.m in Sources */,
+				9C2D94351E53F0A5001AF122 /* main.m in Sources */,
+				9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */,
 				9C2D93FA1E53EF3E001AF122 /* AppDelegate.m in Sources */,
-				9C2D93F71E53EF3E001AF122 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,20 +367,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C2D93FE1E53EF3E001AF122 /* Main.storyboard */ = {
+		9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9C2D93FF1E53EF3E001AF122 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9C2D94031E53EF3E001AF122 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C2D94041E53EF3E001AF122 /* Base */,
+				9C2D942B1E53F0A5001AF122 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9C2D942C1E53F0A5001AF122 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C2D942D1E53F0A5001AF122 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -422,7 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ZQTDevKit/Info.plist;
+				INFOPLIST_FILE = ZQTDevKit/ProjectConfig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zhiqiantong.ZQTDevKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -433,7 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ZQTDevKit/Info.plist;
+				INFOPLIST_FILE = ZQTDevKit/ProjectConfig/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Zhiqiantong.ZQTDevKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -505,6 +561,7 @@
 				9C2D94211E53EF3E001AF122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C2D94221E53EF3E001AF122 /* Build configuration list for PBXNativeTarget "ZQTDevKitTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +570,7 @@
 				9C2D94241E53EF3E001AF122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C2D94251E53EF3E001AF122 /* Build configuration list for PBXNativeTarget "ZQTDevKitUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +579,7 @@
 				9C2D94271E53EF3E001AF122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
