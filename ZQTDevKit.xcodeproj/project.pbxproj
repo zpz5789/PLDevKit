@@ -21,6 +21,9 @@
 		9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */; };
 		9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */; };
 		9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */; };
+		9C50CC231E5C41BE0082863C /* UITextField+JKInputLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */; };
+		9C50CC261E5C41D80082863C /* UITextField+placeHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */; };
+		9C50CC291E5C41F20082863C /* UIView+PLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC281E5C41F20082863C /* UIView+PLExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,12 @@
 		9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Indicator.m"; sourceTree = "<group>"; };
 		9C2DCF131E543F4A00FA765E /* NSString+RegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegEx.h"; sourceTree = "<group>"; };
 		9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegEx.m"; sourceTree = "<group>"; };
+		9C50CC211E5C41BE0082863C /* UITextField+JKInputLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+JKInputLimit.h"; sourceTree = "<group>"; };
+		9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JKInputLimit.m"; sourceTree = "<group>"; };
+		9C50CC241E5C41D80082863C /* UITextField+placeHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+placeHolder.h"; sourceTree = "<group>"; };
+		9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+placeHolder.m"; sourceTree = "<group>"; };
+		9C50CC271E5C41F20082863C /* UIView+PLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PLExtension.h"; sourceTree = "<group>"; };
+		9C50CC281E5C41F20082863C /* UIView+PLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PLExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +181,12 @@
 		9C2DCF081E5406EF00FA765E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9C50CC271E5C41F20082863C /* UIView+PLExtension.h */,
+				9C50CC281E5C41F20082863C /* UIView+PLExtension.m */,
+				9C50CC241E5C41D80082863C /* UITextField+placeHolder.h */,
+				9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */,
+				9C50CC211E5C41BE0082863C /* UITextField+JKInputLimit.h */,
+				9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */,
 				9C2DCF091E5406EF00FA765E /* Button_Category */,
 			);
 			path = UI;
@@ -325,11 +340,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C2D93FD1E53EF3E001AF122 /* ViewController.m in Sources */,
+				9C50CC261E5C41D80082863C /* UITextField+placeHolder.m in Sources */,
+				9C50CC231E5C41BE0082863C /* UITextField+JKInputLimit.m in Sources */,
 				9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */,
 				9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */,
 				9C2DCF0C1E54075F00FA765E /* UIButton+countDown.m in Sources */,
 				9C2D94381E53F107001AF122 /* RegExCategories.m in Sources */,
 				9C2D94351E53F0A5001AF122 /* main.m in Sources */,
+				9C50CC291E5C41F20082863C /* UIView+PLExtension.m in Sources */,
 				9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */,
 				9C2D93FA1E53EF3E001AF122 /* AppDelegate.m in Sources */,
 			);
