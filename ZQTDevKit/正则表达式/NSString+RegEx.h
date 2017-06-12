@@ -20,4 +20,7 @@
 
 ///判断密码格式
 - (BOOL)isPasswordFormat;
+
+///判断中文名称
+- (BOOL)isChineseUserName;
 @end

@@ -38,6 +38,12 @@
     return [self verifyWithRegExStr:regExStr];
 }
 
+///判断中文名称
+- (BOOL)isChineseUserName
+{
+    NSString *regExStr = @"(^[\u4e00-\u9fa5]{0,}$)";
+    return  [self verifyWithRegExStr:regExStr];
+}
 
 - (BOOL)verifyWithRegExStr:(NSString *)regEx
 {
