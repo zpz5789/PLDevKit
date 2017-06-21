@@ -14,16 +14,32 @@
 		9C2D94311E53F0A5001AF122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D94291E53F0A5001AF122 /* Assets.xcassets */; };
 		9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */; };
 		9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942C1E53F0A5001AF122 /* Main.storyboard */; };
-		9C2D94341E53F0A5001AF122 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942E1E53F0A5001AF122 /* Info.plist */; };
 		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
-		9C2D94381E53F107001AF122 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D94371E53F107001AF122 /* RegExCategories.m */; };
-		9C2DCF0C1E54075F00FA765E /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */; };
-		9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */; };
-		9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */; };
-		9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */; };
-		9C50CC231E5C41BE0082863C /* UITextField+JKInputLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */; };
-		9C50CC261E5C41D80082863C /* UITextField+placeHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */; };
-		9C50CC291E5C41F20082863C /* UIView+PLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50CC281E5C41F20082863C /* UIView+PLExtension.m */; };
+		9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */; };
+		9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */; };
+		9C7C16A41EFA808C00563528 /* NSString+JKRMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C166B1EFA808C00563528 /* NSString+JKRMD5.m */; };
+		9C7C16A51EFA808C00563528 /* NSString+RegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C166E1EFA808C00563528 /* NSString+RegEx.m */; };
+		9C7C16A61EFA808C00563528 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16701EFA808C00563528 /* RegExCategories.m */; };
+		9C7C16A71EFA808C00563528 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16741EFA808C00563528 /* UIButton+countDown.m */; };
+		9C7C16A81EFA808C00563528 /* UIButton+Indicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16761EFA808C00563528 /* UIButton+Indicator.m */; };
+		9C7C16A91EFA808C00563528 /* UIButton+TouchAreaInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16781EFA808C00563528 /* UIButton+TouchAreaInsets.m */; };
+		9C7C16AA1EFA808C00563528 /* UIColor+JKRColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C167B1EFA808C00563528 /* UIColor+JKRColor.m */; };
+		9C7C16AB1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C167E1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.m */; };
+		9C7C16AC1EFA808C00563528 /* UIImage+JKR_MessageImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16811EFA808C00563528 /* UIImage+JKR_MessageImage.m */; };
+		9C7C16AD1EFA808C00563528 /* UIImage+JKRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16831EFA808C00563528 /* UIImage+JKRImage.m */; };
+		9C7C16AE1EFA808C00563528 /* UIImage+JKRRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16851EFA808C00563528 /* UIImage+JKRRender.m */; };
+		9C7C16AF1EFA808C00563528 /* UITextField+JKInputLimit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16881EFA808C00563528 /* UITextField+JKInputLimit.m */; };
+		9C7C16B01EFA808C00563528 /* UITextField+placeHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C168A1EFA808C00563528 /* UITextField+placeHolder.m */; };
+		9C7C16B11EFA808C00563528 /* UITextView+JKRPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C168D1EFA808C00563528 /* UITextView+JKRPlaceHolder.m */; };
+		9C7C16B21EFA808C00563528 /* UIView+JKR_Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16901EFA808C00563528 /* UIView+JKR_Frame.m */; };
+		9C7C16B31EFA808C00563528 /* UIView+JKR_HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16921EFA808C00563528 /* UIView+JKR_HitTest.m */; };
+		9C7C16B41EFA808C00563528 /* UIView+JKRSnap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16941EFA808C00563528 /* UIView+JKRSnap.m */; };
+		9C7C16B51EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16961EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m */; };
+		9C7C16B61EFA808C00563528 /* UIView+JKRTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16981EFA808C00563528 /* UIView+JKRTouch.m */; };
+		9C7C16B71EFA808C00563528 /* UIView+PLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C169A1EFA808C00563528 /* UIView+PLExtension.m */; };
+		9C7C16B81EFA808C00563528 /* UINavigationController+JKRBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C169D1EFA808C00563528 /* UINavigationController+JKRBackButton.m */; };
+		9C7C16B91EFA808C00563528 /* UINavigationController+JKRStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C169F1EFA808C00563528 /* UINavigationController+JKRStatusBar.m */; };
+		9C7C16BA1EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16A11EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,22 +76,56 @@
 		9C2D942D1E53F0A5001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2D942E1E53F0A5001AF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2D942F1E53F0A5001AF122 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9C2D94361E53F107001AF122 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
-		9C2D94371E53F107001AF122 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
-		9C2DCF0A1E54075F00FA765E /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
-		9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
-		9C2DCF0D1E54077900FA765E /* UIButton+TouchAreaInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TouchAreaInsets.h"; sourceTree = "<group>"; };
-		9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TouchAreaInsets.m"; sourceTree = "<group>"; };
-		9C2DCF101E5407FF00FA765E /* UIButton+Indicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Indicator.h"; sourceTree = "<group>"; };
-		9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Indicator.m"; sourceTree = "<group>"; };
-		9C2DCF131E543F4A00FA765E /* NSString+RegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegEx.h"; sourceTree = "<group>"; };
-		9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegEx.m"; sourceTree = "<group>"; };
-		9C50CC211E5C41BE0082863C /* UITextField+JKInputLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+JKInputLimit.h"; sourceTree = "<group>"; };
-		9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JKInputLimit.m"; sourceTree = "<group>"; };
-		9C50CC241E5C41D80082863C /* UITextField+placeHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+placeHolder.h"; sourceTree = "<group>"; };
-		9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+placeHolder.m"; sourceTree = "<group>"; };
-		9C50CC271E5C41F20082863C /* UIView+PLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PLExtension.h"; sourceTree = "<group>"; };
-		9C50CC281E5C41F20082863C /* UIView+PLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PLExtension.m"; sourceTree = "<group>"; };
+		9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_Observer.h"; sourceTree = "<group>"; };
+		9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JKR_Observer.m"; sourceTree = "<group>"; };
+		9C7C16681EFA808C00563528 /* NSObject+JKR_RunTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_RunTime.h"; sourceTree = "<group>"; };
+		9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JKR_RunTime.m"; sourceTree = "<group>"; };
+		9C7C166A1EFA808C00563528 /* NSString+JKRMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKRMD5.h"; sourceTree = "<group>"; };
+		9C7C166B1EFA808C00563528 /* NSString+JKRMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKRMD5.m"; sourceTree = "<group>"; };
+		9C7C166D1EFA808C00563528 /* NSString+RegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RegEx.h"; sourceTree = "<group>"; };
+		9C7C166E1EFA808C00563528 /* NSString+RegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RegEx.m"; sourceTree = "<group>"; };
+		9C7C166F1EFA808C00563528 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
+		9C7C16701EFA808C00563528 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
+		9C7C16731EFA808C00563528 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
+		9C7C16741EFA808C00563528 /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
+		9C7C16751EFA808C00563528 /* UIButton+Indicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Indicator.h"; sourceTree = "<group>"; };
+		9C7C16761EFA808C00563528 /* UIButton+Indicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Indicator.m"; sourceTree = "<group>"; };
+		9C7C16771EFA808C00563528 /* UIButton+TouchAreaInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TouchAreaInsets.h"; sourceTree = "<group>"; };
+		9C7C16781EFA808C00563528 /* UIButton+TouchAreaInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TouchAreaInsets.m"; sourceTree = "<group>"; };
+		9C7C167A1EFA808C00563528 /* UIColor+JKRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JKRColor.h"; sourceTree = "<group>"; };
+		9C7C167B1EFA808C00563528 /* UIColor+JKRColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JKRColor.m"; sourceTree = "<group>"; };
+		9C7C167D1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+JKRTouch.h"; sourceTree = "<group>"; };
+		9C7C167E1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+JKRTouch.m"; sourceTree = "<group>"; };
+		9C7C16801EFA808C00563528 /* UIImage+JKR_MessageImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JKR_MessageImage.h"; sourceTree = "<group>"; };
+		9C7C16811EFA808C00563528 /* UIImage+JKR_MessageImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JKR_MessageImage.m"; sourceTree = "<group>"; };
+		9C7C16821EFA808C00563528 /* UIImage+JKRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JKRImage.h"; sourceTree = "<group>"; };
+		9C7C16831EFA808C00563528 /* UIImage+JKRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JKRImage.m"; sourceTree = "<group>"; };
+		9C7C16841EFA808C00563528 /* UIImage+JKRRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JKRRender.h"; sourceTree = "<group>"; };
+		9C7C16851EFA808C00563528 /* UIImage+JKRRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JKRRender.m"; sourceTree = "<group>"; };
+		9C7C16871EFA808C00563528 /* UITextField+JKInputLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+JKInputLimit.h"; sourceTree = "<group>"; };
+		9C7C16881EFA808C00563528 /* UITextField+JKInputLimit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+JKInputLimit.m"; sourceTree = "<group>"; };
+		9C7C16891EFA808C00563528 /* UITextField+placeHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+placeHolder.h"; sourceTree = "<group>"; };
+		9C7C168A1EFA808C00563528 /* UITextField+placeHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+placeHolder.m"; sourceTree = "<group>"; };
+		9C7C168C1EFA808C00563528 /* UITextView+JKRPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+JKRPlaceHolder.h"; sourceTree = "<group>"; };
+		9C7C168D1EFA808C00563528 /* UITextView+JKRPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+JKRPlaceHolder.m"; sourceTree = "<group>"; };
+		9C7C168F1EFA808C00563528 /* UIView+JKR_Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKR_Frame.h"; sourceTree = "<group>"; };
+		9C7C16901EFA808C00563528 /* UIView+JKR_Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKR_Frame.m"; sourceTree = "<group>"; };
+		9C7C16911EFA808C00563528 /* UIView+JKR_HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKR_HitTest.h"; sourceTree = "<group>"; };
+		9C7C16921EFA808C00563528 /* UIView+JKR_HitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKR_HitTest.m"; sourceTree = "<group>"; };
+		9C7C16931EFA808C00563528 /* UIView+JKRSnap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKRSnap.h"; sourceTree = "<group>"; };
+		9C7C16941EFA808C00563528 /* UIView+JKRSnap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKRSnap.m"; sourceTree = "<group>"; };
+		9C7C16951EFA808C00563528 /* UIView+JKRTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKRTapGestureRecognizer.h"; sourceTree = "<group>"; };
+		9C7C16961EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKRTapGestureRecognizer.m"; sourceTree = "<group>"; };
+		9C7C16971EFA808C00563528 /* UIView+JKRTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKRTouch.h"; sourceTree = "<group>"; };
+		9C7C16981EFA808C00563528 /* UIView+JKRTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKRTouch.m"; sourceTree = "<group>"; };
+		9C7C16991EFA808C00563528 /* UIView+PLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PLExtension.h"; sourceTree = "<group>"; };
+		9C7C169A1EFA808C00563528 /* UIView+PLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PLExtension.m"; sourceTree = "<group>"; };
+		9C7C169C1EFA808C00563528 /* UINavigationController+JKRBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JKRBackButton.h"; sourceTree = "<group>"; };
+		9C7C169D1EFA808C00563528 /* UINavigationController+JKRBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JKRBackButton.m"; sourceTree = "<group>"; };
+		9C7C169E1EFA808C00563528 /* UINavigationController+JKRStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JKRStatusBar.h"; sourceTree = "<group>"; };
+		9C7C169F1EFA808C00563528 /* UINavigationController+JKRStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JKRStatusBar.m"; sourceTree = "<group>"; };
+		9C7C16A01EFA808C00563528 /* UIViewController+JKRStatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JKRStatusBarStyle.h"; sourceTree = "<group>"; };
+		9C7C16A11EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JKRStatusBarStyle.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +180,8 @@
 				9C2D93F91E53EF3E001AF122 /* AppDelegate.m */,
 				9C2D93FB1E53EF3E001AF122 /* ViewController.h */,
 				9C2D93FC1E53EF3E001AF122 /* ViewController.m */,
-				9C2DCF081E5406EF00FA765E /* UI */,
-				9C2D94301E53F0A5001AF122 /* 正则表达式 */,
+				9C7C16651EFA808B00563528 /* Foundation */,
+				9C7C16711EFA808C00563528 /* UIKit */,
 				9C2D94281E53F0A5001AF122 /* ProjectConfig */,
 			);
 			path = ZQTDevKit;
@@ -167,42 +217,140 @@
 			path = ProjectConfig;
 			sourceTree = "<group>";
 		};
-		9C2D94301E53F0A5001AF122 /* 正则表达式 */ = {
+		9C7C16651EFA808B00563528 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				9C2D94361E53F107001AF122 /* RegExCategories.h */,
-				9C2D94371E53F107001AF122 /* RegExCategories.m */,
-				9C2DCF131E543F4A00FA765E /* NSString+RegEx.h */,
-				9C2DCF141E543F4A00FA765E /* NSString+RegEx.m */,
+				9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */,
+				9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */,
+				9C7C16681EFA808C00563528 /* NSObject+JKR_RunTime.h */,
+				9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */,
+				9C7C166A1EFA808C00563528 /* NSString+JKRMD5.h */,
+				9C7C166B1EFA808C00563528 /* NSString+JKRMD5.m */,
+				9C7C166C1EFA808C00563528 /* 正则表达式 */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		9C7C166C1EFA808C00563528 /* 正则表达式 */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C166D1EFA808C00563528 /* NSString+RegEx.h */,
+				9C7C166E1EFA808C00563528 /* NSString+RegEx.m */,
+				9C7C166F1EFA808C00563528 /* RegExCategories.h */,
+				9C7C16701EFA808C00563528 /* RegExCategories.m */,
 			);
 			path = "正则表达式";
 			sourceTree = "<group>";
 		};
-		9C2DCF081E5406EF00FA765E /* UI */ = {
+		9C7C16711EFA808C00563528 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				9C50CC271E5C41F20082863C /* UIView+PLExtension.h */,
-				9C50CC281E5C41F20082863C /* UIView+PLExtension.m */,
-				9C50CC241E5C41D80082863C /* UITextField+placeHolder.h */,
-				9C50CC251E5C41D80082863C /* UITextField+placeHolder.m */,
-				9C50CC211E5C41BE0082863C /* UITextField+JKInputLimit.h */,
-				9C50CC221E5C41BE0082863C /* UITextField+JKInputLimit.m */,
-				9C2DCF091E5406EF00FA765E /* Button_Category */,
+				9C7C16721EFA808C00563528 /* UIButton */,
+				9C7C16791EFA808C00563528 /* UIColor */,
+				9C7C167C1EFA808C00563528 /* UIGestureRecognizer */,
+				9C7C167F1EFA808C00563528 /* UIImage */,
+				9C7C16861EFA808C00563528 /* UITextField */,
+				9C7C168B1EFA808C00563528 /* UITextView */,
+				9C7C168E1EFA808C00563528 /* UIView */,
+				9C7C169B1EFA808C00563528 /* UIViewController */,
 			);
-			path = UI;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
-		9C2DCF091E5406EF00FA765E /* Button_Category */ = {
+		9C7C16721EFA808C00563528 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
-				9C2DCF101E5407FF00FA765E /* UIButton+Indicator.h */,
-				9C2DCF111E5407FF00FA765E /* UIButton+Indicator.m */,
-				9C2DCF0A1E54075F00FA765E /* UIButton+countDown.h */,
-				9C2DCF0B1E54075F00FA765E /* UIButton+countDown.m */,
-				9C2DCF0D1E54077900FA765E /* UIButton+TouchAreaInsets.h */,
-				9C2DCF0E1E54077900FA765E /* UIButton+TouchAreaInsets.m */,
+				9C7C16731EFA808C00563528 /* UIButton+countDown.h */,
+				9C7C16741EFA808C00563528 /* UIButton+countDown.m */,
+				9C7C16751EFA808C00563528 /* UIButton+Indicator.h */,
+				9C7C16761EFA808C00563528 /* UIButton+Indicator.m */,
+				9C7C16771EFA808C00563528 /* UIButton+TouchAreaInsets.h */,
+				9C7C16781EFA808C00563528 /* UIButton+TouchAreaInsets.m */,
 			);
-			path = Button_Category;
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		9C7C16791EFA808C00563528 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C167A1EFA808C00563528 /* UIColor+JKRColor.h */,
+				9C7C167B1EFA808C00563528 /* UIColor+JKRColor.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		9C7C167C1EFA808C00563528 /* UIGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C167D1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.h */,
+				9C7C167E1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.m */,
+			);
+			path = UIGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		9C7C167F1EFA808C00563528 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C16801EFA808C00563528 /* UIImage+JKR_MessageImage.h */,
+				9C7C16811EFA808C00563528 /* UIImage+JKR_MessageImage.m */,
+				9C7C16821EFA808C00563528 /* UIImage+JKRImage.h */,
+				9C7C16831EFA808C00563528 /* UIImage+JKRImage.m */,
+				9C7C16841EFA808C00563528 /* UIImage+JKRRender.h */,
+				9C7C16851EFA808C00563528 /* UIImage+JKRRender.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		9C7C16861EFA808C00563528 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C16871EFA808C00563528 /* UITextField+JKInputLimit.h */,
+				9C7C16881EFA808C00563528 /* UITextField+JKInputLimit.m */,
+				9C7C16891EFA808C00563528 /* UITextField+placeHolder.h */,
+				9C7C168A1EFA808C00563528 /* UITextField+placeHolder.m */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
+		9C7C168B1EFA808C00563528 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C168C1EFA808C00563528 /* UITextView+JKRPlaceHolder.h */,
+				9C7C168D1EFA808C00563528 /* UITextView+JKRPlaceHolder.m */,
+			);
+			path = UITextView;
+			sourceTree = "<group>";
+		};
+		9C7C168E1EFA808C00563528 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C168F1EFA808C00563528 /* UIView+JKR_Frame.h */,
+				9C7C16901EFA808C00563528 /* UIView+JKR_Frame.m */,
+				9C7C16911EFA808C00563528 /* UIView+JKR_HitTest.h */,
+				9C7C16921EFA808C00563528 /* UIView+JKR_HitTest.m */,
+				9C7C16931EFA808C00563528 /* UIView+JKRSnap.h */,
+				9C7C16941EFA808C00563528 /* UIView+JKRSnap.m */,
+				9C7C16951EFA808C00563528 /* UIView+JKRTapGestureRecognizer.h */,
+				9C7C16961EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m */,
+				9C7C16971EFA808C00563528 /* UIView+JKRTouch.h */,
+				9C7C16981EFA808C00563528 /* UIView+JKRTouch.m */,
+				9C7C16991EFA808C00563528 /* UIView+PLExtension.h */,
+				9C7C169A1EFA808C00563528 /* UIView+PLExtension.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		9C7C169B1EFA808C00563528 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C169C1EFA808C00563528 /* UINavigationController+JKRBackButton.h */,
+				9C7C169D1EFA808C00563528 /* UINavigationController+JKRBackButton.m */,
+				9C7C169E1EFA808C00563528 /* UINavigationController+JKRStatusBar.h */,
+				9C7C169F1EFA808C00563528 /* UINavigationController+JKRStatusBar.m */,
+				9C7C16A01EFA808C00563528 /* UIViewController+JKRStatusBarStyle.h */,
+				9C7C16A11EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +415,7 @@
 		9C2D93EA1E53EF3E001AF122 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Zhiqiantong;
 				TargetAttributes = {
 					9C2D93F11E53EF3E001AF122 = {
@@ -311,7 +459,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C2D94341E53F0A5001AF122 /* Info.plist in Resources */,
 				9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */,
 				9C2D94311E53F0A5001AF122 /* Assets.xcassets in Resources */,
 				9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */,
@@ -339,17 +486,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7C16B41EFA808C00563528 /* UIView+JKRSnap.m in Sources */,
+				9C7C16AB1EFA808C00563528 /* UIGestureRecognizer+JKRTouch.m in Sources */,
+				9C7C16B61EFA808C00563528 /* UIView+JKRTouch.m in Sources */,
+				9C7C16AE1EFA808C00563528 /* UIImage+JKRRender.m in Sources */,
+				9C7C16B81EFA808C00563528 /* UINavigationController+JKRBackButton.m in Sources */,
+				9C7C16AD1EFA808C00563528 /* UIImage+JKRImage.m in Sources */,
+				9C7C16A71EFA808C00563528 /* UIButton+countDown.m in Sources */,
 				9C2D93FD1E53EF3E001AF122 /* ViewController.m in Sources */,
-				9C50CC261E5C41D80082863C /* UITextField+placeHolder.m in Sources */,
-				9C50CC231E5C41BE0082863C /* UITextField+JKInputLimit.m in Sources */,
-				9C2DCF151E543F4A00FA765E /* NSString+RegEx.m in Sources */,
-				9C2DCF121E5407FF00FA765E /* UIButton+Indicator.m in Sources */,
-				9C2DCF0C1E54075F00FA765E /* UIButton+countDown.m in Sources */,
-				9C2D94381E53F107001AF122 /* RegExCategories.m in Sources */,
+				9C7C16AF1EFA808C00563528 /* UITextField+JKInputLimit.m in Sources */,
+				9C7C16B91EFA808C00563528 /* UINavigationController+JKRStatusBar.m in Sources */,
+				9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */,
+				9C7C16B71EFA808C00563528 /* UIView+PLExtension.m in Sources */,
+				9C7C16AA1EFA808C00563528 /* UIColor+JKRColor.m in Sources */,
+				9C7C16A41EFA808C00563528 /* NSString+JKRMD5.m in Sources */,
+				9C7C16A51EFA808C00563528 /* NSString+RegEx.m in Sources */,
 				9C2D94351E53F0A5001AF122 /* main.m in Sources */,
-				9C50CC291E5C41F20082863C /* UIView+PLExtension.m in Sources */,
-				9C2DCF0F1E54077900FA765E /* UIButton+TouchAreaInsets.m in Sources */,
+				9C7C16BA1EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m in Sources */,
+				9C7C16B31EFA808C00563528 /* UIView+JKR_HitTest.m in Sources */,
+				9C7C16A61EFA808C00563528 /* RegExCategories.m in Sources */,
+				9C7C16B51EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m in Sources */,
+				9C7C16A81EFA808C00563528 /* UIButton+Indicator.m in Sources */,
+				9C7C16B11EFA808C00563528 /* UITextView+JKRPlaceHolder.m in Sources */,
+				9C7C16B21EFA808C00563528 /* UIView+JKR_Frame.m in Sources */,
+				9C7C16A91EFA808C00563528 /* UIButton+TouchAreaInsets.m in Sources */,
+				9C7C16AC1EFA808C00563528 /* UIImage+JKR_MessageImage.m in Sources */,
+				9C7C16B01EFA808C00563528 /* UITextField+placeHolder.m in Sources */,
 				9C2D93FA1E53EF3E001AF122 /* AppDelegate.m in Sources */,
+				9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
