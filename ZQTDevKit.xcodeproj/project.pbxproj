@@ -15,6 +15,7 @@
 		9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */; };
 		9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942C1E53F0A5001AF122 /* Main.storyboard */; };
 		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
+		9C64FEBA1F04975600BEF0EF /* UIButton+touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FEB91F04975600BEF0EF /* UIButton+touch.m */; };
 		9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */; };
 		9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */; };
 		9C7C16A41EFA808C00563528 /* NSString+JKRMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C166B1EFA808C00563528 /* NSString+JKRMD5.m */; };
@@ -76,6 +77,8 @@
 		9C2D942D1E53F0A5001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2D942E1E53F0A5001AF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2D942F1E53F0A5001AF122 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C64FEB81F04975600BEF0EF /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
+		9C64FEB91F04975600BEF0EF /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
 		9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_Observer.h"; sourceTree = "<group>"; };
 		9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JKR_Observer.m"; sourceTree = "<group>"; };
 		9C7C16681EFA808C00563528 /* NSObject+JKR_RunTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_RunTime.h"; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 		9C7C16721EFA808C00563528 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
+				9C64FEB81F04975600BEF0EF /* UIButton+touch.h */,
+				9C64FEB91F04975600BEF0EF /* UIButton+touch.m */,
 				9C7C16731EFA808C00563528 /* UIButton+countDown.h */,
 				9C7C16741EFA808C00563528 /* UIButton+countDown.m */,
 				9C7C16751EFA808C00563528 /* UIButton+Indicator.h */,
@@ -497,6 +502,7 @@
 				9C7C16AF1EFA808C00563528 /* UITextField+JKInputLimit.m in Sources */,
 				9C7C16B91EFA808C00563528 /* UINavigationController+JKRStatusBar.m in Sources */,
 				9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */,
+				9C64FEBA1F04975600BEF0EF /* UIButton+touch.m in Sources */,
 				9C7C16B71EFA808C00563528 /* UIView+PLExtension.m in Sources */,
 				9C7C16AA1EFA808C00563528 /* UIColor+JKRColor.m in Sources */,
 				9C7C16A41EFA808C00563528 /* NSString+JKRMD5.m in Sources */,
