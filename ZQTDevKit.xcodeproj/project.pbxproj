@@ -156,6 +156,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0138D81F06A8E100CB42F4 /* Design Patterns */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Design Patterns";
+			sourceTree = "<group>";
+		};
 		9C2D93E91E53EF3E001AF122 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +190,7 @@
 				9C2D93F91E53EF3E001AF122 /* AppDelegate.m */,
 				9C2D93FB1E53EF3E001AF122 /* ViewController.h */,
 				9C2D93FC1E53EF3E001AF122 /* ViewController.m */,
+				9C0138D81F06A8E100CB42F4 /* Design Patterns */,
 				9C7C16651EFA808B00563528 /* Foundation */,
 				9C7C16711EFA808C00563528 /* UIKit */,
 				9C2D94281E53F0A5001AF122 /* ProjectConfig */,
