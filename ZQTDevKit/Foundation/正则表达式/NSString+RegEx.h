@@ -23,4 +23,13 @@
 
 ///判断中文名称
 - (BOOL)isChineseUserName;
+
+///限制只能输入数字
+- (BOOL) isOnlyNumber;
+
+///检测有效身份证
+//15位
+- (BOOL) isValidIdentifyFifteen;
+//18位
+- (BOOL) isValidIdentifyEighteen;
 @end

@@ -45,6 +45,45 @@
     return  [self verifyWithRegExStr:regExStr];
 }
 
+///检测有效身份证
+//15位
+- (BOOL) isValidIdentifyFifteen
+{
+    NSString * identifyTest=@"^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$";
+    return [self verifyWithRegExStr:identifyTest];
+}
+//18位
+- (BOOL) isValidIdentifyEighteen
+{
+    NSString * identifyTest=@"^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";
+    return [self verifyWithRegExStr:identifyTest];
+}
+
+
+
+
+///限制只能输入数字
+- (BOOL) isOnlyNumber
+{
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < self.length) {
+        NSString * string = [self substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length == 0) {
+            res = NO;
+            break;
+        }
+        i++;
+    }
+    
+    return res;
+}
+
+
+
+
 - (BOOL)verifyWithRegExStr:(NSString *)regEx
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regEx];
