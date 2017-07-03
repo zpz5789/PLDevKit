@@ -15,6 +15,8 @@
 		9C2D94321E53F0A5001AF122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942A1E53F0A5001AF122 /* LaunchScreen.storyboard */; };
 		9C2D94331E53F0A5001AF122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2D942C1E53F0A5001AF122 /* Main.storyboard */; };
 		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
+		9C5FAD3B1F09F66C003834B9 /* NSString+JKSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3A1F09F66C003834B9 /* NSString+JKSize.m */; };
+		9C5FAD3E1F09F69F003834B9 /* NSString+JKPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */; };
 		9C64FEBA1F04975600BEF0EF /* UIButton+touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FEB91F04975600BEF0EF /* UIButton+touch.m */; };
 		9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */; };
 		9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */; };
@@ -77,6 +79,10 @@
 		9C2D942D1E53F0A5001AF122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2D942E1E53F0A5001AF122 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2D942F1E53F0A5001AF122 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C5FAD391F09F66C003834B9 /* NSString+JKSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKSize.h"; sourceTree = "<group>"; };
+		9C5FAD3A1F09F66C003834B9 /* NSString+JKSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKSize.m"; sourceTree = "<group>"; };
+		9C5FAD3C1F09F69F003834B9 /* NSString+JKPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKPinyin.h"; sourceTree = "<group>"; };
+		9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKPinyin.m"; sourceTree = "<group>"; };
 		9C64FEB81F04975600BEF0EF /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
 		9C64FEB91F04975600BEF0EF /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
 		9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_Observer.h"; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 		9C7C16651EFA808B00563528 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FAD3C1F09F69F003834B9 /* NSString+JKPinyin.h */,
+				9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */,
+				9C5FAD391F09F66C003834B9 /* NSString+JKSize.h */,
+				9C5FAD3A1F09F66C003834B9 /* NSString+JKSize.m */,
 				9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */,
 				9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */,
 				9C7C16681EFA808C00563528 /* NSObject+JKR_RunTime.h */,
@@ -508,6 +518,7 @@
 				9C7C16A71EFA808C00563528 /* UIButton+countDown.m in Sources */,
 				9C2D93FD1E53EF3E001AF122 /* ViewController.m in Sources */,
 				9C7C16AF1EFA808C00563528 /* UITextField+JKInputLimit.m in Sources */,
+				9C5FAD3E1F09F69F003834B9 /* NSString+JKPinyin.m in Sources */,
 				9C7C16B91EFA808C00563528 /* UINavigationController+JKRStatusBar.m in Sources */,
 				9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */,
 				9C64FEBA1F04975600BEF0EF /* UIButton+touch.m in Sources */,
@@ -516,6 +527,7 @@
 				9C7C16A41EFA808C00563528 /* NSString+JKRMD5.m in Sources */,
 				9C7C16A51EFA808C00563528 /* NSString+RegEx.m in Sources */,
 				9C2D94351E53F0A5001AF122 /* main.m in Sources */,
+				9C5FAD3B1F09F66C003834B9 /* NSString+JKSize.m in Sources */,
 				9C7C16BA1EFA808C00563528 /* UIViewController+JKRStatusBarStyle.m in Sources */,
 				9C7C16B31EFA808C00563528 /* UIView+JKR_HitTest.m in Sources */,
 				9C7C16A61EFA808C00563528 /* RegExCategories.m in Sources */,
