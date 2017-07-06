@@ -17,6 +17,7 @@
 		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
 		9C5FAD3B1F09F66C003834B9 /* NSString+JKSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3A1F09F66C003834B9 /* NSString+JKSize.m */; };
 		9C5FAD3E1F09F69F003834B9 /* NSString+JKPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */; };
+		9C6047D01F0E8F8400B64CA9 /* NSTimer+JKAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6047CF1F0E8F8400B64CA9 /* NSTimer+JKAddition.m */; };
 		9C64FEBA1F04975600BEF0EF /* UIButton+touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C64FEB91F04975600BEF0EF /* UIButton+touch.m */; };
 		9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16671EFA808C00563528 /* NSObject+JKR_Observer.m */; };
 		9C7C16A31EFA808C00563528 /* NSObject+JKR_RunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C16691EFA808C00563528 /* NSObject+JKR_RunTime.m */; };
@@ -83,6 +84,8 @@
 		9C5FAD3A1F09F66C003834B9 /* NSString+JKSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKSize.m"; sourceTree = "<group>"; };
 		9C5FAD3C1F09F69F003834B9 /* NSString+JKPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKPinyin.h"; sourceTree = "<group>"; };
 		9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKPinyin.m"; sourceTree = "<group>"; };
+		9C6047CE1F0E8F8400B64CA9 /* NSTimer+JKAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+JKAddition.h"; sourceTree = "<group>"; };
+		9C6047CF1F0E8F8400B64CA9 /* NSTimer+JKAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+JKAddition.m"; sourceTree = "<group>"; };
 		9C64FEB81F04975600BEF0EF /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
 		9C64FEB91F04975600BEF0EF /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
 		9C7C16661EFA808C00563528 /* NSObject+JKR_Observer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JKR_Observer.h"; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		9C7C16651EFA808B00563528 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				9C6047CE1F0E8F8400B64CA9 /* NSTimer+JKAddition.h */,
+				9C6047CF1F0E8F8400B64CA9 /* NSTimer+JKAddition.m */,
 				9C5FAD3C1F09F69F003834B9 /* NSString+JKPinyin.h */,
 				9C5FAD3D1F09F69F003834B9 /* NSString+JKPinyin.m */,
 				9C5FAD391F09F66C003834B9 /* NSString+JKSize.h */,
@@ -538,6 +543,7 @@
 				9C7C16A91EFA808C00563528 /* UIButton+TouchAreaInsets.m in Sources */,
 				9C7C16AC1EFA808C00563528 /* UIImage+JKR_MessageImage.m in Sources */,
 				9C7C16B01EFA808C00563528 /* UITextField+placeHolder.m in Sources */,
+				9C6047D01F0E8F8400B64CA9 /* NSTimer+JKAddition.m in Sources */,
 				9C2D93FA1E53EF3E001AF122 /* AppDelegate.m in Sources */,
 				9C7C16A21EFA808C00563528 /* NSObject+JKR_Observer.m in Sources */,
 			);
