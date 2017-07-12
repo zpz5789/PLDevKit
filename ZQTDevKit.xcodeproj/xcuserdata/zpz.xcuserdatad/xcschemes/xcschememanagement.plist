@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ZQTCommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>ZQTDevKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,21 @@
 			<true/>
 		</dict>
 		<key>9C2D94151E53EF3E001AF122</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C631A021F0F677A00AC712C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C631A1A1F0F677A00AC712C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C631A251F0F677A00AC712C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

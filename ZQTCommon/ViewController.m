@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  ZQTDevKit
+//  ZQTCommon
 //
-//  Created by zpz on 2017/2/15.
+//  Created by zpz on 2017/7/7.
 //  Copyright © 2017年 Zhiqiantong. All rights reserved.
 //
 
@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"分类列表";
     // Do any additional setup after loading the view, typically from a nib.
 }
 
