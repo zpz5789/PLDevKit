@@ -16,6 +16,7 @@
 		9C2D94351E53F0A5001AF122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D942F1E53F0A5001AF122 /* main.m */; };
 		9C5A1CA52224E49800B4CD20 /* PLIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A1CA42224E49800B4CD20 /* PLIAPManager.m */; };
 		9C5A1CA82224E8F200B4CD20 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5A1CA72224E8F100B4CD20 /* StoreKit.framework */; };
+		9C5A1CAB22263FD900B4CD20 /* PLTabOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A1CAA22263FD900B4CD20 /* PLTabOneController.m */; };
 		9C5FAD3B1F09F66C003834B9 /* NSString+PLSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3A1F09F66C003834B9 /* NSString+PLSize.m */; };
 		9C5FAD3E1F09F69F003834B9 /* NSString+PLPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FAD3D1F09F69F003834B9 /* NSString+PLPinyin.m */; };
 		9C6047D01F0E8F8400B64CA9 /* NSTimer+PLAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6047CF1F0E8F8400B64CA9 /* NSTimer+PLAddition.m */; };
@@ -79,6 +80,8 @@
 		9C5A1CA32224E49800B4CD20 /* PLIAPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLIAPManager.h; sourceTree = "<group>"; };
 		9C5A1CA42224E49800B4CD20 /* PLIAPManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLIAPManager.m; sourceTree = "<group>"; };
 		9C5A1CA72224E8F100B4CD20 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9C5A1CA922263FD900B4CD20 /* PLTabOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLTabOneController.h; sourceTree = "<group>"; };
+		9C5A1CAA22263FD900B4CD20 /* PLTabOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLTabOneController.m; sourceTree = "<group>"; };
 		9C5FAD391F09F66C003834B9 /* NSString+PLSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PLSize.h"; sourceTree = "<group>"; };
 		9C5FAD3A1F09F66C003834B9 /* NSString+PLSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PLSize.m"; sourceTree = "<group>"; };
 		9C5FAD3C1F09F69F003834B9 /* NSString+PLPinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PLPinyin.h"; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				9C2D93F91E53EF3E001AF122 /* AppDelegate.m */,
 				9C2D93FB1E53EF3E001AF122 /* ViewController.h */,
 				9C2D93FC1E53EF3E001AF122 /* ViewController.m */,
+				9C5A1CA922263FD900B4CD20 /* PLTabOneController.h */,
+				9C5A1CAA22263FD900B4CD20 /* PLTabOneController.m */,
 				9C5A1C9E2224E2AC00B4CD20 /* Tools */,
 				9C7C16651EFA808B00563528 /* Foundation */,
 				9C7C16711EFA808C00563528 /* UIKit */,
@@ -445,7 +450,13 @@
 				TargetAttributes = {
 					9C2D93F11E53EF3E001AF122 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 28JPV368T2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					9C2D940A1E53EF3E001AF122 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -533,6 +544,7 @@
 				9C7C16A61EFA808C00563528 /* RegExCategories.m in Sources */,
 				9C7C16B51EFA808C00563528 /* UIView+JKRTapGestureRecognizer.m in Sources */,
 				9C7C16A81EFA808C00563528 /* UIButton+Indicator.m in Sources */,
+				9C5A1CAB22263FD900B4CD20 /* PLTabOneController.m in Sources */,
 				9C5A1CA52224E49800B4CD20 /* PLIAPManager.m in Sources */,
 				9C7C16B11EFA808C00563528 /* UITextView+JKRPlaceHolder.m in Sources */,
 				9C7C16B21EFA808C00563528 /* UIView+JKR_Frame.m in Sources */,
@@ -702,9 +714,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28JPV368T2;
 				INFOPLIST_FILE = "$(SRCROOT)/PLDevKit/ProjectConfig/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Zhiqiantong.PLDevKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZhiQianTong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -713,9 +726,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28JPV368T2;
 				INFOPLIST_FILE = "$(SRCROOT)/PLDevKit/ProjectConfig/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Zhiqiantong.PLDevKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZhiQianTong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

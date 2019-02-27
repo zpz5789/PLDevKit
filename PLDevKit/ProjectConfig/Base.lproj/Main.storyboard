@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--1-->
         <scene sceneID="duP-nF-7TE">
             <objects>
-                <viewController id="A5U-fU-9JJ" sceneMemberID="viewController">
+                <viewController id="A5U-fU-9JJ" customClass="PLTabOneController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7cL-wX-v0p"/>
                         <viewControllerLayoutGuide type="bottom" id="U3H-GI-vR1"/>
@@ -20,9 +20,40 @@
                     <view key="view" contentMode="scaleToFill" id="MyB-9u-tkq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3E-p3-hfN">
+                                <rect key="frame" x="224" y="109" width="62" height="30"/>
+                                <state key="normal" title="恢复购买"/>
+                                <connections>
+                                    <action selector="restoreBuyClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="SmX-Q7-plf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gh-uo-RrK">
+                                <rect key="frame" x="56" y="157" width="62" height="30"/>
+                                <state key="normal" title="获取商品"/>
+                                <connections>
+                                    <action selector="getProductClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="for-vv-YoF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpv-f4-VGi">
+                                <rect key="frame" x="64" y="109" width="31" height="30"/>
+                                <state key="normal" title="购买"/>
+                                <connections>
+                                    <action selector="buyClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="4xs-lb-Gsv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v3E-p3-hfN" firstAttribute="top" secondItem="7cL-wX-v0p" secondAttribute="bottom" constant="89" id="HtH-Qh-gAl"/>
+                            <constraint firstItem="9gh-uo-RrK" firstAttribute="top" secondItem="Jpv-f4-VGi" secondAttribute="bottom" constant="18" id="L9M-lT-feF"/>
+                            <constraint firstItem="Jpv-f4-VGi" firstAttribute="leading" secondItem="MyB-9u-tkq" secondAttribute="leading" constant="64" id="QKU-F3-NKF"/>
+                            <constraint firstItem="Jpv-f4-VGi" firstAttribute="top" secondItem="7cL-wX-v0p" secondAttribute="bottom" constant="89" id="QLP-jC-hoD"/>
+                            <constraint firstAttribute="trailing" secondItem="v3E-p3-hfN" secondAttribute="trailing" constant="89" id="ZA3-gA-siN"/>
+                            <constraint firstItem="9gh-uo-RrK" firstAttribute="leading" secondItem="Jpv-f4-VGi" secondAttribute="leading" constant="-8" id="tU4-NQ-JWo"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="CRX-o4-hHA"/>
+                    <tabBarItem key="tabBarItem" title="1" id="CRX-o4-hHA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8O6-h4-0Na" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

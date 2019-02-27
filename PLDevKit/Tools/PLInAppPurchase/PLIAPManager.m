@@ -8,201 +8,341 @@
 
 #import "PLIAPManager.h"
 
-dispatch_queue_t pl_iap_queue(){
-    static dispatch_queue_t pl_iap_queue;
-    static dispatch_once_t onceToken_iap_queue;
-    dispatch_once(&onceToken_iap_queue, ^{
-        pl_iap_queue = dispatch_queue_create("com.iap.queue", DISPATCH_QUEUE_CONCURRENT);
-    });
+// 日志输出
+#ifdef DEBUG
+#define PLIAPManagerLog(...) NSLog(__VA_ARGS__)
+#else
+#define PLIAPManagerLog(...)
+#endif
+
+
+@interface PLProductsRequestdelegate : NSObject<SKProductsRequestDelegate>
+
+@property (nonatomic, strong) PLSKProductsRequestSuccessBlock successBlock;
+@property (nonatomic, strong) PLSKProductsRequestFailureBlock failureBlock;
+@property (nonatomic, weak) PLIAPManager *manager;
+
+@end
+
+@interface PLAddPaymentBlockContainer : NSObject
+@property (nonatomic, copy) PLSKAddPaymentSuccessBlock successBlock;
+@property (nonatomic, copy) PLSKAddPaymentFailureBlock failureBlock;
+@end
+
+@interface PLIAPManager ()<SKPaymentTransactionObserver>
+{
+    // 请求产品类数组，用于保存产品请求和回调，可以同时多组请求
+    NSMutableSet <PLProductsRequestdelegate *> *_productsRequestDelegates;
+
+    // 保存appStore返回内购产品
+    NSMutableDictionary *_allProducts;
     
-    return pl_iap_queue;
+    // 保存交易请求block
+    NSMutableDictionary <NSString *,PLAddPaymentBlockContainer *> *_addPaymentBlockContainers;
 }
-
-@interface PLIAPManager ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
-
-@property (nonatomic, assign) BOOL ifOnceRequestFinished; //判断一次请求是否完成
-
-@property (nonatomic, strong) NSMutableDictionary *productDict;
-
 @end
 
 @implementation PLIAPManager
 
-static PLIAPManager *_instance;
-
 #pragma mark - singleton
-+ (instancetype)allocWithZone:(NSZone *)zone
-{
-    return [self sharedManager];
-}
 
 + (instancetype)sharedManager
 {
+    static PLIAPManager *_instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [[self alloc] init];
-        [_instance start];
+        _instance = [[super alloc] init];
     });
     return _instance;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _productsRequestDelegates = [NSMutableSet set];
+        _allProducts = [NSMutableDictionary dictionary];
+        _addPaymentBlockContainers = [NSMutableDictionary dictionary];
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+
+    }
     return self;
 }
 
-
-- (void)start
+- (void)dealloc
 {
-    // Observers are not retained.  The transactions array will only be synchronized with the server while the queue has observers.  This may require that the user authenticate.
-    // 添加监听者监听内购交易状态
-    dispatch_async(pl_iap_queue(), ^{
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-    });
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
-#pragma mark - SKPaymentTransactionObserver
+- (void)addProduct:(SKProduct *)product
+{
+    _allProducts[product.productIdentifier] = product;
+}
 
+#pragma mark - requestProduct
+
+- (void)requestProducts:(NSSet *)identifiers
+{
+    [self requestProducts:identifiers success:nil failure:nil];
+}
+
+- (void)requestProducts:(NSSet *)identifiers
+                success:(PLSKProductsRequestSuccessBlock)successBlock
+                failure:(PLSKProductsRequestFailureBlock)failureBlock
+{
+    PLIAPError *error = [self verifyPaymentRestrict];
+    if (!error) {
+        PLProductsRequestdelegate *requestDelegate = [[PLProductsRequestdelegate alloc] init];
+        requestDelegate.successBlock = successBlock;
+        requestDelegate.failureBlock = failureBlock;
+        [_productsRequestDelegates addObject:requestDelegate];
+        requestDelegate.manager = self;
+        
+        SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:identifiers];
+        productsRequest.delegate = requestDelegate;
+        [productsRequest start];
+        
+    } else {
+        failureBlock(error);
+    }
+}
+
+#pragma mark - addPayment
+
+- (void)addPayment:(NSString *)productIdentifier
+{
+    [self addPayment:productIdentifier success:nil failure:nil];
+}
+
+- (void)addPayment:(NSString *)productIdentifier
+           success:(PLSKAddPaymentSuccessBlock)successBlock
+           failure:(PLSKAddPaymentFailureBlock)failureBlock
+{
+    [self addPayment:productIdentifier user:nil success:successBlock failure:failureBlock];
+}
+
+- (void)addPayment:(NSString *)productIdentifier
+              user:(NSString *)userIdentifier
+           success:(PLSKAddPaymentSuccessBlock)successBlock
+           failure:(PLSKAddPaymentFailureBlock)failureBlock
+{
+    PLIAPError *error = [self verifyPaymentRestrict];
+    if (!error) {
+        SKProduct *product = _allProducts[productIdentifier];
+        if (product) {
+            SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
+            payment.applicationUsername = userIdentifier;
+            PLAddPaymentBlockContainer *addPaymentBlockContainer = [[PLAddPaymentBlockContainer alloc] init];
+            addPaymentBlockContainer.successBlock = successBlock;
+            addPaymentBlockContainer.failureBlock = failureBlock;
+            _addPaymentBlockContainers[productIdentifier] = addPaymentBlockContainer;
+            // 添加到交易队列
+            [[SKPaymentQueue defaultQueue] addPayment:payment];
+            
+        } else {
+            PLIAPManagerLog(@"不能识别的产品ID");
+            PLIAPError *error = [[PLIAPError alloc] initWithErrorType:PLIAPPaymentUseUnknownProductID errorMessage:@"不能识别的产品ID"];
+            failureBlock(nil, error);
+        }
+    } else {
+        failureBlock(nil, error);
+    }
+}
+
+- (void)restoreTransactions
+{
+    [self restoreTransactionsOfUser:nil onSuccess:nil failure:nil];
+}
+
+- (void)restoreTransactionsOnSuccess:(PLSKRestoreTransactionsSuccessBlock)successBlock
+                             failure:(PLSKRestoreTransactionsFailureBlock)failureBlock
+{
+    [self restoreTransactionsOfUser:nil onSuccess:successBlock failure:failureBlock];
+}
+
+- (void)restoreTransactionsOfUser:(NSString *)userIdentifier
+                        onSuccess:(PLSKRestoreTransactionsSuccessBlock)successBlock
+                          failure:(PLSKRestoreTransactionsFailureBlock)failureBlock{
+    PLIAPError *error = [self verifyPaymentRestrict];
+    if (!error) {
+        
+    } else {
+        failureBlock(error);
+    }
+}
+
+- (void)refreshReceipt
+{
+    [self refreshReceiptOnSuccess:nil failure:nil];
+}
+
+- (void)refreshReceiptOnSuccess:(PLSKRefreshReceiptSuccessBlock)successBlock
+                        failure:(PLSKRefreshReceiptFailureBlock)failureBlock
+{
+    PLIAPError *error = [self verifyPaymentRestrict];
+    if (!error) {
+        
+    } else {
+        failureBlock();
+    }
+}
+
+
+#pragma mark - SKPaymentTransactionObserver
 /**
- 交易状态更新回调
+ 交易队列更新回调
  */
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions
 {
     for (SKPaymentTransaction *transaction in transactions) {
         switch (transaction.transactionState) {
-                
             case SKPaymentTransactionStatePurchasing://正在交易
-                
+                PLIAPManagerLog(@"正在交易%@",transaction.transactionIdentifier);
                 break;
-                
             case SKPaymentTransactionStatePurchased://交易完成
-                
-//                [self getReceipt]; //获取交易成功后的购买凭证
-//
-//                [self saveReceipt]; //存储交易凭证
-//
-//                [self checkIAPFiles];//把self.receipt发送到服务器验证是否有效
-//
-//                [self completeTransaction:transaction];
-                
+                PLIAPManagerLog(@"交易完成%@",transaction.transactionIdentifier);
                 break;
-                
             case SKPaymentTransactionStateFailed://交易失败
-                // 交易失败处理
-//                [self failedTransaction:transaction];
-                
+                PLIAPManagerLog(@"交易失败%@",transaction.transactionIdentifier);
+                [self didFailTransaction:transaction queue:queue error:transaction.error];
                 break;
-                
             case SKPaymentTransactionStateRestored://已经购买过该商品
+                PLIAPManagerLog(@"重新购买%@",transaction.transactionIdentifier);
                 // 恢复购买处理
 //                [self restoreTransaction:transaction];
                 
                 break;
-                
+            case SKPaymentTransactionStateDeferred://推迟购买
+                PLIAPManagerLog(@"推迟购买");
+                [self didDeferTransaction:transaction];
+                break;
             default:
-                
+                PLIAPManagerLog(@"其他情况");
+
                 break;
         }
     }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue removedTransactions:(NSArray<SKPaymentTransaction *> *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions) {
+        PLIAPManagerLog(@"移除交易%@",transaction.transactionIdentifier);
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
+{
+    PLIAPManagerLog(@"恢复购买失败");
+}
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    PLIAPManagerLog(@"恢复购买成功");
+}
+
+#pragma mark - 处理交易流程
+- (void)didPurchasedTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
+{
     
 }
+
+- (void)didDeferTransaction:(SKPaymentTransaction *)transaction
+{
+    if ([self.delegate respondsToSelector:@selector(storePaymentTransactionDeferred:)]) {
+        [self.delegate storePaymentTransactionDeferred:transaction];
+    }
+}
+
+- (void)didPurchasingTransaction:(SKPaymentTransaction *)transaction
+{
+    if ([self.delegate respondsToSelector:@selector(storePaymentTransactionPurchasing)]) {
+        [self.delegate storePaymentTransactionPurchasing];
+    }
+}
+
+- (void)didFailTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue *)queue error:(NSError *)error
+{
+    NSString *errorMessage;
+    PLIAPErrorType type;
+    if(error.code == SKErrorPaymentCancelled) {
+        errorMessage = @"用户取消购买";
+        type = PLIAPPaymentUserCancel;
+    } else {
+        errorMessage = @"购买失败，请重试";
+        type = PLIAPPaymentFailure;
+    }
+    
+    PLIAPError *plError = [[PLIAPError alloc] initWithErrorType:type errorMessage:errorMessage];
+    PLAddPaymentBlockContainer *container = _addPaymentBlockContainers[transaction.transactionIdentifier];
+    
+    if (container.failureBlock) {
+        container.failureBlock(transaction, plError);
+    }
+    if ([self.delegate respondsToSelector:@selector(storePaymentTransactionFailed:)]) {
+        [self.delegate storePaymentTransactionFailed:plError];
+    }
+#warning 关闭交易
+}
+
+
+
+- (PLIAPError *)verifyPaymentRestrict
+{
+    if (![self canMakePayments]) {
+        PLIAPManagerLog(@"用户没有付款权限");
+        PLIAPError *error = [[PLIAPError alloc] initWithErrorType:PLIAPMakePaymentNotAllowed errorMessage:@"用户没有付款权限"];
+        return error;
+    }
+    return nil;
+}
+
+- (BOOL)canMakePayments
+{
+    return [SKPaymentQueue canMakePayments];
+}
+
+@end
+
+
+@interface PLIAPError ()
+@property (nonatomic, assign) PLIAPErrorType errorType;
+@property (nonatomic, copy) NSString * errorMessage;
+@end
+
+@implementation PLIAPError
+
+- (instancetype)initWithErrorType:(PLIAPErrorType)errorType errorMessage:(NSString *)errorMessage
+{
+    if (self = [super init]) {
+        _errorType = errorType;
+        _errorMessage = errorMessage;
+    }
+    return self;
+}
+
+@end
+
+@implementation PLProductsRequestdelegate
 
 #pragma mark - SKProductsRequestDelegate
 
-/**
- 请求内购产品回调
- */
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
-    NSArray *products = response.products;
-    if (products.count == 0) {
-        NSLog(@"无法获取产品信息，请重试");
-//        [self filedWithErrorCode:IAP_FILEDCOED_CANNOTGETINFORMATION error:nil];
-        self.ifOnceRequestFinished = YES; //失败，请求完成
-    } else {
-        for (SKProduct *product in products) {
-            // 保存产品
-            [self.productDict setObject:product forKey:product.productIdentifier];
-        }
-        // 产品信息获取成功回调
-        //    [self.delegate IAPToolGotProducts:productArray];
+    PLIAPManagerLog(@"接收产品响应");
+    for (SKProduct *product in response.products) {
+        // 保存产品
+        [self.manager addProduct:product];
+    }
+    self.successBlock(response.products, response.invalidProductIdentifiers);
+    if ([self.manager.delegate respondsToSelector:@selector(storeProductsRequestFinished:invalidProductIDs:)]) {
+        [self.manager.delegate storeProductsRequestFinished:response.products invalidProductIDs:response.invalidProductIdentifiers];
     }
 }
-
-#pragma mark -
-/**
- *  根据用户传入的数组（包装的产品id）询问苹果的服务器上的产品
- *
- *  @param products 商品ID的数组
- */
-- (void)requestProductsWithProductArray:(NSArray * _Nonnull)products
-{
-    PLIAPManagerLog(@"请求可销售商品列表");
-    if (!_ifOnceRequestFinished) {
-        if ([SKPaymentQueue canMakePayments]) {
-            // 能够销售的商品
-            NSSet *set = [[NSSet alloc] initWithArray:products];
-            // "异步"询问苹果能否销售
-            SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
-            request.delegate = self;
-            [request start];
-        } else {
-            PLIAPManagerLog(@"不允许内购，没有权限");
-            _ifOnceRequestFinished = YES; //完成请求
-        }
-    } else {
-        PLIAPManagerLog(@"交易正在进行，请稍定");
-    }
-}
-
-
-/**
- *  询问苹果的服务器能够销售哪些商品
- *
- *  @param productID 商品ID的数组
- */
-
-- (void)requestProductWithProductID:(NSString * _Nonnull)productID
-{
-    PLIAPManagerLog(@"请求可销售商品列表");
-    if (!_ifOnceRequestFinished) {
-        if ([SKPaymentQueue canMakePayments]) {
-            // 能够销售的商品
-            NSSet *set = [[NSSet alloc] initWithObjects:productID, nil];
-            // "异步"询问苹果能否销售
-            SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
-            request.delegate = self;
-            [request start];
-        } else {
-            PLIAPManagerLog(@"不允许内购，没有权限");
-            _ifOnceRequestFinished = YES; //完成请求
-        }
-    } else {
-        PLIAPManagerLog(@"交易正在进行，请稍定");
-    }
-
-}
-
-- (void)buyProductWithID:(NSString * _Nonnull)productID
-{
-    SKProduct *product = self.productDict[productID];
-    
-    // 要购买产品(店员给用户开了个小票)
-    SKPayment *payment = [SKPayment paymentWithProduct:product];
-    
-    // 去收银台排队，准备购买(异步网络)
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-#pragma mark - 懒加载
-
-- (NSMutableDictionary *)productDict
-{
-    if (!_productDict) {
-        _productDict = [NSMutableDictionary dictionary];
-    }
-    return _productDict;
-}
-
-
 
 @end
+
+@implementation PLAddPaymentBlockContainer
+
+@end
+

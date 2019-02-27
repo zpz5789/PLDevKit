@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSString *pingyin = @"我是中国人";
-    NSLog(@"%@",[pingyin pl_pinyinWithPhoneticSymbol]);
+//    NSLog(@"%@",[pingyin pl_pinyinWithPhoneticSymbol]);
     
     return YES;
 }
