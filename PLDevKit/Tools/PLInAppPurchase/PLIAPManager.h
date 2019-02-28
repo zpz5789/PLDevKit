@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, PLIAPErrorType) {
     PLIAPPaymentUseUnknownProductID,// 未知产品ID
     PLIAPPaymentUserCancel,//用户取消
     PLIAPPaymentFailure,//购买失败
+    PLIAPRestoredTransactionsFailure,// 重新购买失败
 };
 
 @interface PLIAPError : NSObject
@@ -52,7 +53,7 @@ typedef void (^PLSKRefreshReceiptFailureBlock)(void);
 @end
 
 @protocol PLIAPManagerDelegate <NSObject>
-
+@optional
 - (void)storePaymentTransactionDeferred:(SKPaymentTransaction *)transaction;
 - (void)storePaymentTransactionFailed:(PLIAPError *)error;
 - (void)storePaymentTransactionPurchasing;

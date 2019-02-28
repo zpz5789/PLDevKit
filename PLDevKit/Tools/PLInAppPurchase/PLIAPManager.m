@@ -37,12 +37,24 @@
     // 保存appStore返回内购产品
     NSMutableDictionary *_allProducts;
     
+    
+    // 保存重购交易
+    NSMutableArray *_restoredTransactions;
+    // 记录之前购买的所有交易数目
+    NSInteger _pendingRestoredTransactionsCount;
+    BOOL _restoredCompletedTransactionsFinished;
+
     // 保存交易请求block
     NSMutableDictionary <NSString *,PLAddPaymentBlockContainer *> *_addPaymentBlockContainers;
     // 刷新收据
     SKReceiptRefreshRequest *_refreshReceiptRequest;
     PLIAPReceiptLocallyVerifier *_defaultReceiptLocallyVerifier;
-
+    
+    PLSKRestoreTransactionsSuccessBlock _restoretransactionSuccess;
+    PLSKRestoreTransactionsFailureBlock _restoretransactionFailure;
+    
+    PLSKRefreshReceiptSuccessBlock _refreshReceiptSuccess;
+    PLSKRefreshReceiptFailureBlock _refreshReceiptFailure;
 }
 @end
 
@@ -66,6 +78,7 @@
     if (self) {
         _productsRequestDelegates = [NSMutableSet set];
         _allProducts = [NSMutableDictionary dictionary];
+        _restoredTransactions = [NSMutableArray array];
         _addPaymentBlockContainers = [NSMutableDictionary dictionary];
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
         _defaultReceiptLocallyVerifier = [[PLIAPReceiptLocallyVerifier alloc] init];
@@ -161,7 +174,17 @@
 - (void)restoreTransactionsOnSuccess:(PLSKRestoreTransactionsSuccessBlock)successBlock
                              failure:(PLSKRestoreTransactionsFailureBlock)failureBlock
 {
-    [self restoreTransactionsOfUser:nil onSuccess:successBlock failure:failureBlock];
+    PLIAPError *error = [self verifyPaymentRestrict];
+    if (!error) {
+        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+        _restoretransactionSuccess = successBlock;
+        _restoretransactionFailure = failureBlock;
+        _restoredTransactions = [NSMutableArray array];
+        _pendingRestoredTransactionsCount = 0;
+        _restoredCompletedTransactionsFinished = NO;
+    } else {
+        failureBlock(error);
+    }
 }
 
 - (void)restoreTransactionsOfUser:(NSString *)userIdentifier
@@ -169,7 +192,11 @@
                           failure:(PLSKRestoreTransactionsFailureBlock)failureBlock{
     PLIAPError *error = [self verifyPaymentRestrict];
     if (!error) {
-        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+        [[SKPaymentQueue defaultQueue] restoreCompletedTransactionsWithApplicationUsername:userIdentifier];
+        _restoretransactionSuccess = successBlock;
+        _restoretransactionFailure = failureBlock;
+        _pendingRestoredTransactionsCount = 0;
+        _restoredCompletedTransactionsFinished = NO;
     } else {
         failureBlock(error);
     }
@@ -199,13 +226,24 @@
 {
     PLIAPManagerLog(@"requestDidFinish:");
     _refreshReceiptRequest = nil;
+    if (_refreshReceiptSuccess)
+    {
+        _refreshReceiptSuccess();
+        _refreshReceiptSuccess = nil;
+    }
+
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
     PLIAPManagerLog(@"%@",NSStringFromSelector(_cmd));
     _refreshReceiptRequest = nil;
-
+    if (_refreshReceiptFailure)
+    {
+//        PLIAPError *plerror = [[PLIAPError alloc] initWithErrorType:PLIAPRefreshReceiptFailure errorMessage:error.localizedDescription];
+        _refreshReceiptFailure();
+        _refreshReceiptFailure = nil;
+    }
 }
 
 #pragma mark - SKPaymentTransactionObserver
@@ -257,11 +295,19 @@
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
 {
     PLIAPManagerLog(@"恢复购买失败");
+    if (_restoretransactionFailure != nil)
+    {
+        PLIAPError *plerror = [[PLIAPError alloc] initWithErrorType:PLIAPRestoredTransactionsFailure errorMessage:@"重新购买失败"];
+        _restoretransactionFailure(plerror);
+        _restoretransactionFailure = nil;
+    }
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
     PLIAPManagerLog(@"重新购买成功");
+    _restoredCompletedTransactionsFinished = YES;
+    [self finisheRestoreTransaction:nil];
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads {
@@ -305,29 +351,33 @@
         if (transaction.downloads.count > 0) {
             [SKPaymentQueue.defaultQueue startDownloads:transaction.downloads];
         }
-        // 保存收据
         
-        
+        [self finisheRestoreTransaction:transaction];
         
     } failure:^(NSError *error) {
         [self didFailTransaction:transaction queue:queue error:error];
     }];
-    
-
-    [self finishTransaction:transaction queue:queue];
-    
 }
 
 - (void)didRestoredTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
 {
-    // 验证收据
-    // - 本地验证
-    // - appStore验证
-    // - 服务器验证
-    
-   
-    // 保存收据
-    [self finishTransaction:transaction queue:queue];
+    _pendingRestoredTransactionsCount ++;
+
+    // 验证收据是否正确
+    if (!self.receiptVerifier) {
+        self.receiptVerifier = _defaultReceiptLocallyVerifier;
+    }
+    [self.receiptVerifier verifyTransaction:transaction success:^{
+        // 有没有下载项目
+        if (transaction.downloads.count > 0) {
+            [SKPaymentQueue.defaultQueue startDownloads:transaction.downloads];
+        }
+        
+        [self finisheRestoreTransaction:transaction];
+        
+    } failure:^(NSError *error) {
+        [self didFailTransaction:transaction queue:queue error:error];
+    }];
 }
 
 - (void)didDeferTransaction:(SKPaymentTransaction *)transaction
@@ -352,16 +402,19 @@
         errorMessage = @"用户取消购买";
         type = PLIAPPaymentUserCancel;
     } else {
+        PLIAPManagerLog(@"%@",error.localizedDescription);
         errorMessage = @"购买失败，请重试";
         type = PLIAPPaymentFailure;
     }
     
     PLIAPError *plError = [[PLIAPError alloc] initWithErrorType:type errorMessage:errorMessage];
-    PLAddPaymentBlockContainer *container = _addPaymentBlockContainers[transaction.transactionIdentifier];
-    
-    if (container.failureBlock) {
+    PLAddPaymentBlockContainer *container = _addPaymentBlockContainers[transaction.payment.productIdentifier];
+
+    if (container.successBlock) {
         container.failureBlock(transaction, plError);
+        [_addPaymentBlockContainers removeObjectForKey:transaction.payment.productIdentifier];
     }
+    
     if ([self.delegate respondsToSelector:@selector(storePaymentTransactionFailed:)]) {
         [self.delegate storePaymentTransactionFailed:plError];
     }
@@ -371,15 +424,34 @@
 
 - (void)finishTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
 {
-    PLAddPaymentBlockContainer *container =  _addPaymentBlockContainers[transaction.transactionIdentifier];
-    if (container) {
-        if (container.successBlock) {
-            container.successBlock(transaction);
-        }
+    PLAddPaymentBlockContainer *container =  _addPaymentBlockContainers[transaction.payment.productIdentifier];
+    if (container.successBlock) {
+        container.successBlock(transaction);
+        [_addPaymentBlockContainers removeObjectForKey:transaction.payment.productIdentifier];
     }
+    PLIAPManagerLog(@"完成一次交易");
+    // 关闭交易
     [queue finishTransaction:transaction];
+    // 保存交易
+    // 如果交易来自Restored，当restored数目为零时候回调
+    if (transaction.transactionState == SKPaymentTransactionStateRestored) {
+        [self finisheRestoreTransaction:transaction];
+    }
 }
 
+- (void)finisheRestoreTransaction:(SKPaymentTransaction *)transaction
+{
+    if (transaction) {
+        _pendingRestoredTransactionsCount --;
+        [_restoredTransactions addObject:transaction];
+    }
+    if (_pendingRestoredTransactionsCount == 0 && _restoredCompletedTransactionsFinished) {
+        if (_restoretransactionSuccess) {
+            _restoretransactionSuccess([_restoredTransactions copy]);
+            _restoretransactionSuccess = nil;
+        }
+    }
+}
 
 - (PLIAPError *)verifyPaymentRestrict
 {

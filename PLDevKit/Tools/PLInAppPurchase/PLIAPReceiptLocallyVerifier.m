@@ -60,8 +60,8 @@ NSString *const PLIAPLiveServer = @"https://buy.itunes.apple.com/verifyReceipt";
             NSInteger status = [jsonResponse[@"status"] integerValue];
             NSLog(@"jsonResponse is %@",jsonResponse);
             if (status == 0) {
-                // 验证成功
-                
+                // 验证成功  bundle_id application_version product_id transaction_id
+                if (jsonResponse )
                 successBlock();
             } else {
                 failureBlock(error);
@@ -98,7 +98,7 @@ NSString *const PLIAPLiveServer = @"https://buy.itunes.apple.com/verifyReceipt";
 //            completionHandler(nil, error);
 //        }
             
-            
+            // 非消耗型
             // 比对 jsonResponse 中以下信息基本上可以保证数据安全
             
 //             bundle_id
