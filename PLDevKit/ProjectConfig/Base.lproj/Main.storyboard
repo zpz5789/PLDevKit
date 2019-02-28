@@ -21,43 +21,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3E-p3-hfN">
-                                <rect key="frame" x="224" y="109" width="62" height="30"/>
-                                <state key="normal" title="恢复购买"/>
-                                <connections>
-                                    <action selector="restoreBuyClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="SmX-Q7-plf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gh-uo-RrK">
-                                <rect key="frame" x="56" y="157" width="62" height="30"/>
+                                <rect key="frame" x="156" y="51" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="获取商品"/>
                                 <connections>
                                     <action selector="getProductClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="for-vv-YoF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpv-f4-VGi">
-                                <rect key="frame" x="64" y="109" width="31" height="30"/>
-                                <state key="normal" title="购买"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-up-KOM">
+                                <rect key="frame" x="0.0" y="108" width="375" height="502"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellID" id="10V-Az-ahB" customClass="PLTabOneCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="10V-Az-ahB" id="LXx-Pc-xzS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-bj-GHh">
+                                                    <rect key="frame" x="15" y="11" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hig-SO-snz">
+                                                    <rect key="frame" x="65" y="12.5" width="31" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.8980392157" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhH-hG-Pgj">
+                                                    <rect key="frame" x="212" y="7" width="31" height="30"/>
+                                                    <state key="normal" title="购买"/>
+                                                    <connections>
+                                                        <action selector="purchaseClick:" destination="10V-Az-ahB" eventType="touchUpInside" id="eeI-jo-OvR"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-Nt-HDd">
+                                                    <rect key="frame" x="293" y="7" width="62" height="30"/>
+                                                    <state key="normal" title="重新购买"/>
+                                                    <connections>
+                                                        <action selector="rePurchaseClick:" destination="10V-Az-ahB" eventType="touchUpInside" id="qMT-41-hIe"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ITX-bj-GHh" firstAttribute="leading" secondItem="LXx-Pc-xzS" secondAttribute="leadingMargin" id="4d5-lg-Ct8"/>
+                                                <constraint firstItem="RhH-hG-Pgj" firstAttribute="centerY" secondItem="m3N-Nt-HDd" secondAttribute="centerY" id="GMp-ek-UJU"/>
+                                                <constraint firstItem="Hig-SO-snz" firstAttribute="leading" secondItem="ITX-bj-GHh" secondAttribute="trailing" constant="15" id="Ieh-uF-XiF"/>
+                                                <constraint firstItem="m3N-Nt-HDd" firstAttribute="centerY" secondItem="LXx-Pc-xzS" secondAttribute="centerY" id="J3P-3s-vhw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ITX-bj-GHh" secondAttribute="bottom" constant="1" id="Uzs-oP-YDy"/>
+                                                <constraint firstItem="Hig-SO-snz" firstAttribute="centerY" secondItem="ITX-bj-GHh" secondAttribute="centerY" id="aAB-hS-ga2"/>
+                                                <constraint firstAttribute="trailing" secondItem="m3N-Nt-HDd" secondAttribute="trailing" constant="20" id="c6v-3X-6YM"/>
+                                                <constraint firstItem="ITX-bj-GHh" firstAttribute="top" secondItem="LXx-Pc-xzS" secondAttribute="topMargin" id="prZ-7U-vZq"/>
+                                                <constraint firstItem="m3N-Nt-HDd" firstAttribute="leading" secondItem="RhH-hG-Pgj" secondAttribute="trailing" constant="50" id="qvz-SW-7DF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="ITX-bj-GHh" id="9H9-oi-1VN"/>
+                                            <outlet property="priceLabel" destination="Hig-SO-snz" id="oo8-xl-8aU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbs-ne-xrI">
+                                <rect key="frame" x="231" y="51" width="62" height="30"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="刷新收据"/>
                                 <connections>
-                                    <action selector="buyClick:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="4xs-lb-Gsv"/>
+                                    <action selector="refreshRequest:" destination="A5U-fU-9JJ" eventType="touchUpInside" id="17D-Pg-Nfe"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="v3E-p3-hfN" firstAttribute="top" secondItem="7cL-wX-v0p" secondAttribute="bottom" constant="89" id="HtH-Qh-gAl"/>
-                            <constraint firstItem="9gh-uo-RrK" firstAttribute="top" secondItem="Jpv-f4-VGi" secondAttribute="bottom" constant="18" id="L9M-lT-feF"/>
-                            <constraint firstItem="Jpv-f4-VGi" firstAttribute="leading" secondItem="MyB-9u-tkq" secondAttribute="leading" constant="64" id="QKU-F3-NKF"/>
-                            <constraint firstItem="Jpv-f4-VGi" firstAttribute="top" secondItem="7cL-wX-v0p" secondAttribute="bottom" constant="89" id="QLP-jC-hoD"/>
-                            <constraint firstAttribute="trailing" secondItem="v3E-p3-hfN" secondAttribute="trailing" constant="89" id="ZA3-gA-siN"/>
-                            <constraint firstItem="9gh-uo-RrK" firstAttribute="leading" secondItem="Jpv-f4-VGi" secondAttribute="leading" constant="-8" id="tU4-NQ-JWo"/>
+                            <constraint firstItem="Xbs-ne-xrI" firstAttribute="height" secondItem="9gh-uo-RrK" secondAttribute="height" id="2w7-ck-l6N"/>
+                            <constraint firstItem="9gh-uo-RrK" firstAttribute="leading" secondItem="MyB-9u-tkq" secondAttribute="leading" constant="156" id="8Di-pp-ZcL"/>
+                            <constraint firstItem="Xbs-ne-xrI" firstAttribute="leading" secondItem="9gh-uo-RrK" secondAttribute="trailing" constant="13" id="CC8-lQ-3NM"/>
+                            <constraint firstAttribute="trailing" secondItem="eo2-up-KOM" secondAttribute="trailing" id="CtB-cv-egT"/>
+                            <constraint firstAttribute="trailing" secondItem="9gh-uo-RrK" secondAttribute="trailing" constant="157" id="aJD-hF-IKT"/>
+                            <constraint firstItem="9gh-uo-RrK" firstAttribute="top" secondItem="7cL-wX-v0p" secondAttribute="bottom" constant="31" id="c0S-e5-DWo"/>
+                            <constraint firstItem="Xbs-ne-xrI" firstAttribute="width" secondItem="9gh-uo-RrK" secondAttribute="width" id="dnB-Yl-6Hd"/>
+                            <constraint firstItem="eo2-up-KOM" firstAttribute="leading" secondItem="MyB-9u-tkq" secondAttribute="leading" id="ij6-79-IOC"/>
+                            <constraint firstItem="Xbs-ne-xrI" firstAttribute="centerY" secondItem="9gh-uo-RrK" secondAttribute="centerY" id="j7A-Pc-cs8"/>
+                            <constraint firstItem="U3H-GI-vR1" firstAttribute="top" secondItem="eo2-up-KOM" secondAttribute="bottom" constant="8" id="l7F-pF-7te"/>
+                            <constraint firstItem="eo2-up-KOM" firstAttribute="top" secondItem="9gh-uo-RrK" secondAttribute="bottom" constant="27" id="otO-aA-hhy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="1" id="CRX-o4-hHA"/>
+                    <connections>
+                        <outlet property="refreshRequest" destination="Xbs-ne-xrI" id="6kJ-bZ-vfU"/>
+                        <outlet property="tableView" destination="eo2-up-KOM" id="Hve-N6-b0w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8O6-h4-0Na" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="411"/>
+            <point key="canvasLocation" x="632.79999999999995" y="410.64467766116945"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="J3V-kW-Ded">

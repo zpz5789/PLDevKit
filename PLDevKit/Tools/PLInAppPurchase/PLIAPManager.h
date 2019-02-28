@@ -35,12 +35,21 @@ typedef void (^PLSKAddPaymentFailureBlock)(SKPaymentTransaction *transaction, PL
 
 /// 恢复购买 void (^)(NSArray *transactions)
 typedef void (^PLSKRestoreTransactionsSuccessBlock)(NSArray *transactions);
-typedef void (^PLSKRestoreTransactionsFailureBlock)(PLIAPError *);
+typedef void (^PLSKRestoreTransactionsFailureBlock)(PLIAPError *error);
 
 /// 刷新收据 refreshReceipt
 typedef void (^PLSKRefreshReceiptSuccessBlock)(void);
 typedef void (^PLSKRefreshReceiptFailureBlock)(void);
 
+
+@protocol PLIAPManagerReceiptVerifier <NSObject>
+
+- (void)verifyTransaction:(SKPaymentTransaction*)transaction
+                  success:(void (^)(void))successBlock
+                  failure:(void (^)(NSError *error))failureBlock;
+
+
+@end
 
 @protocol PLIAPManagerDelegate <NSObject>
 
@@ -60,6 +69,7 @@ typedef void (^PLSKRefreshReceiptFailureBlock)(void);
 @interface PLIAPManager : NSObject
 
 @property (nonatomic, weak) id <PLIAPManagerDelegate> delegate;
+@property (nonatomic, weak) id<PLIAPManagerReceiptVerifier> receiptVerifier;
 
 + (instancetype)sharedManager;
 + (instancetype)alloc __attribute__((unavailable("call sharedManager instead")));
@@ -100,5 +110,3 @@ typedef void (^PLSKRefreshReceiptFailureBlock)(void);
                         failure:(PLSKRefreshReceiptFailureBlock)failureBlock;
 
 @end
-
-

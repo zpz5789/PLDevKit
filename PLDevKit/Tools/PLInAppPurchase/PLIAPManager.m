@@ -7,7 +7,7 @@
 //
 
 #import "PLIAPManager.h"
-
+#import "PLIAPReceiptLocallyVerifier.h"
 // 日志输出
 #ifdef DEBUG
 #define PLIAPManagerLog(...) NSLog(__VA_ARGS__)
@@ -29,7 +29,7 @@
 @property (nonatomic, copy) PLSKAddPaymentFailureBlock failureBlock;
 @end
 
-@interface PLIAPManager ()<SKPaymentTransactionObserver>
+@interface PLIAPManager ()<SKPaymentTransactionObserver, SKRequestDelegate>
 {
     // 请求产品类数组，用于保存产品请求和回调，可以同时多组请求
     NSMutableSet <PLProductsRequestdelegate *> *_productsRequestDelegates;
@@ -39,6 +39,10 @@
     
     // 保存交易请求block
     NSMutableDictionary <NSString *,PLAddPaymentBlockContainer *> *_addPaymentBlockContainers;
+    // 刷新收据
+    SKReceiptRefreshRequest *_refreshReceiptRequest;
+    PLIAPReceiptLocallyVerifier *_defaultReceiptLocallyVerifier;
+
 }
 @end
 
@@ -64,7 +68,7 @@
         _allProducts = [NSMutableDictionary dictionary];
         _addPaymentBlockContainers = [NSMutableDictionary dictionary];
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-
+        _defaultReceiptLocallyVerifier = [[PLIAPReceiptLocallyVerifier alloc] init];
     }
     return self;
 }
@@ -165,7 +169,7 @@
                           failure:(PLSKRestoreTransactionsFailureBlock)failureBlock{
     PLIAPError *error = [self verifyPaymentRestrict];
     if (!error) {
-        
+        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
     } else {
         failureBlock(error);
     }
@@ -181,12 +185,28 @@
 {
     PLIAPError *error = [self verifyPaymentRestrict];
     if (!error) {
-        
+        _refreshReceiptRequest = [[SKReceiptRefreshRequest alloc] initWithReceiptProperties:@{}];
+        _refreshReceiptRequest.delegate = self;
+        [_refreshReceiptRequest start];
+
     } else {
         failureBlock();
     }
 }
 
+#pragma mark - SKRequestDelegate
+- (void)requestDidFinish:(SKRequest *)request
+{
+    PLIAPManagerLog(@"requestDidFinish:");
+    _refreshReceiptRequest = nil;
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error
+{
+    PLIAPManagerLog(@"%@",NSStringFromSelector(_cmd));
+    _refreshReceiptRequest = nil;
+
+}
 
 #pragma mark - SKPaymentTransactionObserver
 /**
@@ -198,9 +218,11 @@
         switch (transaction.transactionState) {
             case SKPaymentTransactionStatePurchasing://正在交易
                 PLIAPManagerLog(@"正在交易%@",transaction.transactionIdentifier);
+                [self didPurchasingTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased://交易完成
                 PLIAPManagerLog(@"交易完成%@",transaction.transactionIdentifier);
+                [self didPurchaseTransaction:transaction queue:queue];
                 break;
             case SKPaymentTransactionStateFailed://交易失败
                 PLIAPManagerLog(@"交易失败%@",transaction.transactionIdentifier);
@@ -208,6 +230,7 @@
                 break;
             case SKPaymentTransactionStateRestored://已经购买过该商品
                 PLIAPManagerLog(@"重新购买%@",transaction.transactionIdentifier);
+                [self didRestoredTransaction:transaction queue:queue];
                 // 恢复购买处理
 //                [self restoreTransaction:transaction];
                 
@@ -238,13 +261,73 @@
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
-    PLIAPManagerLog(@"恢复购买成功");
+    PLIAPManagerLog(@"重新购买成功");
 }
 
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads {
+    [downloads enumerateObjectsUsingBlock:^(SKDownload *thisDownload, NSUInteger idx, BOOL *stop) {
+        SKDownloadState state;
+#if TARGET_OS_IPHONE
+        state = thisDownload.downloadState;
+#elif TARGET_OS_MAC
+        state = thisDownload.state;
+#endif
+        switch (state) {
+            case SKDownloadStateActive:
+                // Download is actively downloading
+                break;
+            case SKDownloadStateFinished: {
+               // SKDownloadStateFinished 下载完成处理
+                [self finishTransaction:thisDownload.transaction queue:queue];
+                // 通知下载完成
+            }
+            case SKDownloadStateFailed: {
+                NSError *error = thisDownload.error;
+                [self didFailTransaction:thisDownload.transaction queue:queue error:error];
+            }
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
+
 #pragma mark - 处理交易流程
-- (void)didPurchasedTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
+- (void)didPurchaseTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
 {
+    // 验证收据是否正确
+    if (!self.receiptVerifier) {
+        self.receiptVerifier = _defaultReceiptLocallyVerifier;
+    }
+    [self.receiptVerifier verifyTransaction:transaction success:^{
+        // 有没有下载项目
+        if (transaction.downloads.count > 0) {
+            [SKPaymentQueue.defaultQueue startDownloads:transaction.downloads];
+        }
+        // 保存收据
+        
+        
+        
+    } failure:^(NSError *error) {
+        [self didFailTransaction:transaction queue:queue error:error];
+    }];
     
+
+    [self finishTransaction:transaction queue:queue];
+    
+}
+
+- (void)didRestoredTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
+{
+    // 验证收据
+    // - 本地验证
+    // - appStore验证
+    // - 服务器验证
+    
+   
+    // 保存收据
+    [self finishTransaction:transaction queue:queue];
 }
 
 - (void)didDeferTransaction:(SKPaymentTransaction *)transaction
@@ -282,9 +365,20 @@
     if ([self.delegate respondsToSelector:@selector(storePaymentTransactionFailed:)]) {
         [self.delegate storePaymentTransactionFailed:plError];
     }
-#warning 关闭交易
+    [queue finishTransaction:transaction];
 }
 
+
+- (void)finishTransaction:(SKPaymentTransaction *)transaction queue:(SKPaymentQueue*)queue
+{
+    PLAddPaymentBlockContainer *container =  _addPaymentBlockContainers[transaction.transactionIdentifier];
+    if (container) {
+        if (container.successBlock) {
+            container.successBlock(transaction);
+        }
+    }
+    [queue finishTransaction:transaction];
+}
 
 
 - (PLIAPError *)verifyPaymentRestrict
@@ -345,4 +439,3 @@
 @implementation PLAddPaymentBlockContainer
 
 @end
-
